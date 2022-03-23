@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   const [firstNumber, setFirstNumber] = useState(null);
-  const [secondNumber, setSecondNumber] = useStat(null);
+  const [secondNumber, setSecondNumber] = useState(null);
   const [result, setResult] = useState(0);
 
   function changeFirstNumberHandler(event) {
@@ -18,17 +18,28 @@ function App() {
     setResult(firstNumber + secondNumber);
   }
 
+  function addRestaHandler(event) {
+    setResult(firstNumber - secondNumber);
+  }
  
+  function addMultiplicacionHandler(event) {
+    setResult(firstNumber * secondNumber);
+  }
  
- 
- 
+  function addDivisionHandler(event) {
+    setResult(firstNumber / secondNumber);
+  }
+
+
  useEffect(() => {
     console.log("firstNumber state:", firstNumber);
-  });
+  }
+  );
 
   useEffect(() => {
     console.log("secondNumber state:", secondNumber);
-  });
+  }
+  );
 
  
   return (
@@ -44,37 +55,24 @@ function App() {
           type="text"
           value={secondNumber}
           onChange={changeSecondNumberHandler}
-        />
+     />
       </p>
       <p>
-        <button onClick={addSumaHandler} value="+">
-          {" "}
-          +{" "}
-        </button>
-        <button onClick={addRestaHandler} value="-">
-          {" "}
-          -{" "}
-        </button>
-        <button onClick={addMultiplicacionHandler} value="*">
-          {" "}
-          *{" "}
-        </button>
-        <button onClick={addDivisionHandler} value="/">
-          {" "}
-          /{" "}
-        </button>
-        <button onClick={}> C </button>
-        <button onClick={}> M+ </button>
-        <button onClick={}> MR </button>
+        <button onClick={addSumaHandler} value="+"> + </button>
+        <button onClick={addRestaHandler} value="-"> - </button>
+        <button onClick={addMultiplicacionHandler} value="*"> * </button>
+        <button onClick={addDivisionHandler} value="/"> / </button>
+        
       </p>
       <p> Resultado : {result}</p>
     </>
   );
 }
 
-/**<p>
-        <input type="checkbox" checked={result} onChange={changeCheckboxHandler}/> 
-        <button onClick={sumaContador}> + </button> />
-      </p>
-      */
 export default App;
+
+/**
+ * <button onClick={}> C </button>
+        <button onClick={}> M+ </button>
+        <button onClick={}> MR </button>
+ */
