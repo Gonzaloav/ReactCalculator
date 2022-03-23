@@ -30,6 +30,9 @@ function App() {
     setResult(firstNumber / secondNumber);
   }
 
+  function addNoverHandler(event) {
+    setResult ("");
+  }
 
  useEffect(() => {
     console.log("firstNumber state:", firstNumber);
@@ -41,7 +44,6 @@ function App() {
   }
   );
 
- 
   return (
     <>
       <h1>Calculadora</h1>
@@ -62,7 +64,7 @@ function App() {
         <button onClick={addRestaHandler} value="-"> - </button>
         <button onClick={addMultiplicacionHandler} value="*"> * </button>
         <button onClick={addDivisionHandler} value="/"> / </button>
-        
+        <button onClick={addNoverHandler} value=""> C </button>
       </p>
       <p> Resultado : {result}</p>
     </>
@@ -72,7 +74,7 @@ function App() {
 export default App;
 
 /**
- * <button onClick={}> C </button>
+ * 
         <button onClick={}> M+ </button>
         <button onClick={}> MR </button>
  */
