@@ -1,18 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
+import History from './components/history/History.jsx';
 
 function App() {
+  /**Siempre que declaro un state se almacenan estos dos nombres =
+   * uno para almacenar y otro para cambiar (set..)*/
+
   const [firstNumber, setFirstNumber] = useState(null);
   const [secondNumber, setSecondNumber] = useState(null);
   const [result, setResult] = useState(0);
   const memoria = useRef (0); /**  recopilar datos no mostrarlos. */
+  const[resultadoHistorial, setResultadoHistorial] = useState([]); 
 
   function changeFirstNumberHandler(event) {
-    setFirstNumber(event.target.value);
+    setFirstNumber(parseFloat (event.target.value)
+    );
   }
 
   function changeSecondNumberHandler(event) {
-    setSecondNumber(event.target.value);
+    setSecondNumber(parseFloat(event.target.value)
+    );
   }
 
   function addSumaHandler(event) {
