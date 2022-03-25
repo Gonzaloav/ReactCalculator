@@ -10,7 +10,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState(null);
   const [result, setResult] = useState(0);
   const memoria = useRef (0); /**  recopilar datos no mostrarlos. */
-  const[resultadoHistorial, setResultadoHistorial] = useState([]); 
+  const [resulsHistorial, setResultsHistorial] = useState([]); 
 
   function changeFirstNumberHandler(event) {
     setFirstNumber(parseFloat (event.target.value)
@@ -51,27 +51,25 @@ function App() {
     setSecondNumber(memoria.current);
   }//copie el valor de `memory` en `secondNumber`.
 
+ //Cada vez que cambia result, se mete en el array resultsHistory los result
+  useEffect(
+    () => { 
+      // La Dispersión es este proceso
+      setResultsHistorial
+      ([...resulsHistorial,result]);
+      //from hace una copia del Array resulsHistorial.
+      const nuevaHistory = Array.from (resulsHistorial); 
+    }, [result]  //useEffect se ejecutará cuando tenga el nuevo resultado.
+   );
 
  useEffect(
    () => {
     console.log("firstNumber state:", firstNumber);
-  }
-  );
-
-  useEffect(
-    () => {
     console.log("secondNumber state:", secondNumber);
-  }
-  );
-
-  useEffect(
-    () => {
-    console.log("M+:", memoria);  
+    console.log("M+:", memoria);  /**  botón "M+"  almacena `result`*/
     console.log("result state:", result);
   }
-  );/**  Añade un botón "M+" que almacene el valor de `result` 
-  en un hook "ref". Llama `memory` al ref.*/
-
+  );
 
   return (
     <>
@@ -86,7 +84,7 @@ function App() {
           type="text"
           value={secondNumber}
           onChange={changeSecondNumberHandler}
-     />
+    />
       </p>
       <p>
         <button onClick={addSumaHandler} value="+"> + </button>
@@ -96,10 +94,15 @@ function App() {
         <button onClick={addMoverHandler} value=""> C </button>
         <button onClick={addAlmacenarHandler} ref={memoria} value="M+"> M+ </button> 
         <button onClick={addCopiarValorHandler} value="MR"> MR </button>
-      </p>
+      </p> 
+
       <p> Resultado : {result}</p>
+
+      <p> <h3> Historial </h3> </p>
+        <History results = {resulsHistorial}/> 
+
     </>
   );
 }
-
+// importar el archivo History.jsx = linea 102 <History results = {resulsHistorial}/>
 export default App;
