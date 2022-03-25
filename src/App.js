@@ -91,6 +91,8 @@ function App() {
         <button onClick={addRestaHandler} value="-"> - </button>
         <button onClick={addMultiplicacionHandler} value="*"> * </button>
         <button onClick={addDivisionHandler} value="/"> / </button>
+      </p> 
+      <p> 
         <button onClick={addMoverHandler} value=""> C </button>
         <button onClick={addAlmacenarHandler} ref={memoria} value="M+"> M+ </button> 
         <button onClick={addCopiarValorHandler} value="MR"> MR </button>
