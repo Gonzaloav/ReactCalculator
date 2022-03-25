@@ -10,7 +10,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState(null);
   const [result, setResult] = useState(0);
   const memoria = useRef (0); /**  recopilar datos no mostrarlos. */
-  const [resulsHistorial, setResultsHistorial] = useState([]); 
+  const [resultsHistorial, setResultsHistorial] = useState([]); 
 
   function changeFirstNumberHandler(event) {
     setFirstNumber(parseFloat (event.target.value)
@@ -56,9 +56,9 @@ function App() {
     () => { 
       // La Dispersión es este proceso
       setResultsHistorial
-      ([...resulsHistorial,result]);
+      ([...resultsHistorial,result]);
       //from hace una copia del Array resulsHistorial.
-      const nuevaHistory = Array.from (resulsHistorial); 
+      const nuevaHistory = Array.from (resultsHistorial); 
     }, [result]  //useEffect se ejecutará cuando tenga el nuevo resultado.
    );
 
@@ -99,7 +99,7 @@ function App() {
       <p> Resultado : {result}</p>
 
       <p> <h3> Historial </h3> </p>
-        <History results = {resulsHistorial}/> 
+        <History results = {resultsHistorial}/> 
 
     </>
   );
